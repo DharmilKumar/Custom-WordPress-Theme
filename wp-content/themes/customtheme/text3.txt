@@ -1,0 +1,54 @@
+<?php
+get_header();
+customize_the_excerpt_length();
+if (have_posts()) :
+    ?>
+    <h2>
+    <?php
+    echo "<h2>Archive Page</h2>";
+    if(is_category()){
+    single_cat_title('Category Archive');
+    }elseif(is_tag()){
+        single_tag_title('Tag Archive');
+    }elseif(is_author()){
+        the_post();
+        echo "Author: ".get_the_author();
+        rewind_posts();
+    }elseif(is_day()){
+        echo "<h2>Daily Archive for: </h2><span class='date'>".get_the_time();
+
+    }elseif(is_month()){
+        echo "<h2>Monthly Archive for: </h2><span class='date'>".get_the_time('F Y');
+    }
+    elseif(is_year()){
+        echo "<h2>Yearly Archive for: </h2><span class='date'>".get_the_time('Y');
+    }else{
+        echo 'Archives';
+    }
+    ?></h2><?php
+
+
+    while (have_posts()) : the_post();
+        the_post();
+        get_template_part('thepost',get_post_format());
+        // echo '<article class="post">';
+        // echo '<h2><a href="' . the_permalink() . '"></a></h2>';
+        // echo '<h2>' . the_title() . '</h2>';
+        // echo '</article>';
+        // echo the_time('F jS, Y') . ' | ' . '<a href="' . get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename')) . '">' . the_author() . '</a> |';
+        // $cat = get_the_category();
+        // $ot = '';
+        // if ($cat) {
+
+        //     foreach($cat as $cats){
+        //         $ot .='<a href="'.get_category_link($cats->term_id).'">'.$cats->cat_name.'</a>'.', ';
+        //     }echo trim($ot,', ');
+        // }
+        // the_content();
+
+    endwhile;
+    
+else :
+    echo "No posts found";
+endif;
+get_footer();

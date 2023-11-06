@@ -1,0 +1,62 @@
+add_action('add_meta_boxes', 'metabox_example');
+add_action('save_post', 'save_metabox_example');
+
+function metabox_example()
+{
+    add_meta_box(
+        'metabox_example_id',
+        __('Add to Recommendation', 'example'),
+        'metabox_example_html',
+        ['cars'],
+        'side'
+    );
+}
+
+function metabox_example_html(\WP_Post $post)
+{
+    $que = new WP_Query(['post_type' => 'cars']);
+    if ($que->have_posts()) :
+        $i = 1;
+        while ($que->have_posts()) : $que->the_post();
+
+            $exampleShowTitle = get_post_meta($post->ID, 'metabox_example_show_title'.$i, true);
+            ?>
+            <label for="metabox_example_show_title<?php echo $i;?>">
+                <input type="checkbox" id="metabox_example_show_title<?php echo $i;?>" value="<?php echo the_title(); ?>" name="metabox_example_show_title<?php echo $i;?>" <?php checked($exampleShowTitle) ?> />
+                <?= __(the_title(), 'example') ?><br>
+            </label>
+        <?php $i++;
+        ?>
+    <?php
+        endwhile;
+    endif
+    ?>
+
+<?php
+}
+
+function save_metabox_example(int $post_id)
+{   
+    $que = new WP_Query(['post_type' => 'cars']);
+    if ($que->have_posts()) :
+        $i = 1;
+        while ($que->have_posts()) : $que->the_post();
+
+    
+        if (array_key_exists('metabox_example_show_title'.$i, $_POST)) {
+            update_post_meta(
+                $post_id,
+                'metabox_example_show_title'.$i,
+                true
+            );
+        } else {
+            delete_post_meta(
+                $post_id,
+                'metabox_example_show_title'.$i,
+            );
+        }
+        $i++;
+
+    endwhile;
+endif;
+}

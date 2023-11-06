@@ -1,0 +1,411 @@
+/*
+Theme Name: customtheme
+Author: Dharmil
+Author URI: https://google.com
+Version: 1.0
+ */
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+a:link, a:visited {
+    color: #000000;
+}
+
+p {
+    line-height: 1.7em;
+}
+
+div.container {
+    max-width: 1134px;
+    margin: 0 auto;
+}
+
+article.post {
+    border-bottom: 4px dashed #ecf0f1;
+}
+
+article.post:last-of-type {
+    border-bottom: none;
+}
+
+.site-header {
+    border-bottom: 3px solid #ecf0f1;
+}
+
+.site-footer {
+    border-top: 3px solid #ecf0f1;
+}
+
+/* Nav Menus */
+
+.navigation-menu ul{
+    margin: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.navigation-menu ul::before, .navigation-menu ul::after {
+    content: "";
+    display: table;
+}
+.navigation-menu ul:after {
+    clear: both;
+}
+
+.navigation-menu ul {
+    zoom: 1
+}
+
+.navigation-menu ul li {
+    list-style: none;
+    float: left;
+    margin-right: 3px;
+}
+
+.navigation-menu ul li a:link,
+.navigation-menu ul li a:visited {
+    display: block;
+    padding: 12px 17px;
+    border: 2px solid #ecf0f1;
+    border-bottom: none;
+    text-decoration: none;
+}
+.navigation-menu ul li a:hover {
+    background-color: rgb(149, 149, 149);
+}
+.navigation-menu ul li.current-menu-item a:link,
+.navigation-menu ul li.current-menu-item a:visited{
+    background-color:  rgb(196, 196, 196);
+    
+}
+/* .sub-menu li{
+    display: none;
+}  */
+.navigation-menu ul li.current-menu-item a:visited, 
+.sub-menu{
+    display: block;
+}
+
+
+
+.page-layout h2{
+    font-size: 200%;
+    color: gray;
+}
+
+.tdcontent {
+    border: dashed 3px #ffd35e;
+    background: #fdf5e1;
+    padding: 10px;
+}
+
+.tdtitle {
+    border: dashed 3px #2ecc71;
+    background: #d7fee8;
+    padding: 10px;
+}
+.small-thumbnail {
+    float: left;
+    margin: 0px 10px 10px 0px;
+}
+
+.single-post-image {
+    float: left;
+    margin: 0px 12px 12px 0px;
+}
+.header-search{
+    float: right;
+}
+
+
+#searchsubmit {
+    background-color: #00a0d2;
+    color: white;
+    padding: 5px 8px;
+    font-size: 15px;
+    line-height: 1.3;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#s {
+    height: 18px;
+    padding: 5px 8px;
+    font-size: 15px;
+    line-height: 1.1;
+    border-radius: 6px;
+}
+
+.post-aside {
+    font-size: 130%;
+    background-color: #fdffdc;
+    padding: 25px;
+    border-radius: 10px;
+}
+.post-link {
+    font-size: 160%;
+    background-color: #d1ecff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+
+
+.post-gallery {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 25px;
+    text-align: center;
+}
+.post-gallery h2{
+    color: red;
+}
+
+
+
+
+.bollywood{
+    background-color: #2ecc71;
+}
+
+
+
+/* side bar */
+.main-column {
+    width: 70%;
+    float: left;
+}
+
+.sidebar-column {
+    width: 30%;
+    float: right;
+}
+
+.main-content {
+    overflow: auto;
+}
+
+
+
+
+
+.home-columns {
+    overflow: auto;
+}
+
+.home-left {
+    width: 45%;
+    float: left;
+}
+
+.home-right {
+    width: 45%;
+    float: right;
+}
+
+
+
+
+/* Nav Menu2 */
+.navigation-menu2 ul{
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    align-items: center;
+}
+
+.navigation-menu2 ul::before, .navigation-menu2 ul::after {
+    content: "";
+    display: table;
+}
+.navigation-menu2 ul:after {
+    clear: both;
+}
+
+.navigation-menu2 ul {
+    zoom: 1
+}
+
+.navigation-menu2 ul li {
+    list-style: none;
+    float: left;
+    margin-right: 3px;
+}
+.navigation-menu2 ul li a{
+    color: #00976f;
+}
+
+.navigation-menu2 ul li a:link,
+.navigation-menu2 ul li a:visited {
+    display: block;
+    padding: 12px 17px;
+    border-bottom: none;
+    text-decoration: none;
+}
+.navigation-menu2 ul li a:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+
+
+/* .sub-menu{
+    display: none;
+}
+.navigation-menu ul li:hover .sub-menu,
+.navigation-menu ul li:focus-within .sub-menu{
+    display: block;
+} */
+
+
+/* Single post */
+
+.single-post{
+    text-align: center;
+}
+
+
+
+/* 
+Slider 
+*/
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 30px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+
+
+/*Pagination*/
+.navigation3 li a,
+.navigation3 li a:hover,
+.navigation3 li.active a,
+.navigation3 li.disabled {
+    color: #fff;
+    text-decoration:none;
+}
+ 
+.navigation3 li {
+    display: inline;
+}
+ 
+.navigation3 li a,
+.navigation3 li a:hover,
+.navigation3 li.active a,
+.navigation3 li.disabled {
+    background-color: #6FB7E9;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 12px;
+    padding: 0.75rem;
+}
+ 
+.navigation3 li a:hover,
+.navigation3 li.active a {
+    background-color: #3C8DC5;
+}
+
+
+
+
+.current{
+    background-color: rgb(242, 237, 237)    ;
+}
+.prev-arr{
+    color: rgb(0, 164, 179);
+}
+.next-arr{
+    color: rgb(0, 164, 179);
+}
+
+p2{
+    font-size: 24px;
+    text-align: left;
+}

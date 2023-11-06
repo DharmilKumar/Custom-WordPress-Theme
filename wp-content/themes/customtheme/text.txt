@@ -1,0 +1,92 @@
+abstract class WPOrg_Meta_Box
+{
+
+
+    /**
+     * Set up and add the meta box.
+     */
+    public static function add()
+    {
+        add_meta_box(
+            'wporg_box_id',          // Unique ID
+            'Add To Recommendation', // Box title
+            [self::class, 'html'],   // Content callback, must be of type callable
+            'cars',             // Post type
+            'side',
+        );
+    }
+
+
+    /**
+     * Save the meta box selections.
+     *
+     * @param int $post_id  The post ID.
+     */
+    public static function save(int $post_id)
+    {
+
+        $que = new WP_Query(['post_type' => 'cars']);
+        $c = $que->found_posts;
+        for ($i = 1; $i <= $c; $i++) {
+
+            if (array_key_exists('check' . $i, $_POST)) {
+                update_post_meta(
+                    $post_id,
+                    '_wporg_meta_key',
+                    $_POST['check' . $i]
+                );
+            }
+        }
+    }
+
+
+    /**
+     * Display the meta box HTML to the user.
+     *
+     * @param WP_Post $post   Post object.
+     */
+    public static function html($post)
+    {
+        $value = get_post_meta($post->ID, '_wporg_meta_key', true);
+
+        $que = new WP_Query(['post_type' => 'cars']);
+        if ($que->have_posts()) :
+            $i = 1;
+            while ($que->have_posts()) : $que->the_post(); ?>
+
+                <input type="checkbox" id="c" value="<?php the_title(); ?>" name="check<?php echo $i; ?>">
+        <?php the_title();
+                echo '<br>';
+                $i++;
+            endwhile;
+        endif;
+        ?>
+        <!-- <input type="checkbox" id="c" name="check1">
+        <?php the_title(); ?> -->
+        <!-- <select name="wporg_field" id="wporg_field" class="postbox">
+			<option value="displaying">display</option>
+			<option value="notdisplay" <?php selected($value, 'something'); ?>>notdisplay</option>
+		</select> -->
+    <?php
+    }
+}
+
+add_action('add_meta_boxes', ['WPOrg_Meta_Box', 'add']);
+add_action('save_post', ['WPOrg_Meta_Box', 'save']);
+
+
+
+
+
+
+
+function pagination_nav() {
+        global $wp_query;
+     
+        if ( $wp_query->max_num_pages > 1 ) { ?>
+            <nav class="pagination" role="navigation">
+                <div class="nav-previous"><?php next_posts_link( '← Older posts' ); ?></div>
+                <div class="nav-next"><?php previous_posts_link( 'Newer posts →' ); ?></div>
+            </nav>
+    <?php }
+    }
