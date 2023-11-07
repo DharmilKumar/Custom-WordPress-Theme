@@ -149,6 +149,22 @@
             the_content();
             echo '<a href="' . $link . '"><p>click here to visit official site</p></a>';
 
+            if(function_exists('the_field')){
+                if(get_field('car_price')!=''){
+                    echo '<h3>Car Details</h3>';
+                    echo 'The Price is: <b>$';echo the_field('car_price').'</b>';echo '<br>';    
+                }
+                if(get_field('engine_type')!=''){
+                    echo 'Engine: <b>';echo the_field('engine_type').'</b>';echo '<br>';
+                }
+                if(get_field('engine_hp')!=''){
+                    echo 'Engine HP: <b>';echo the_field('engine_hp').'HP</b>';echo '<br>';
+                }
+                if(get_field('transmission_type')!=''){
+                    echo 'Transmission Type: <b>';echo the_field('transmission_type').'</b>';echo '<br>';
+                }
+    
+            }
         endwhile;
 
         // wp_pagenavi(array('query' => $w));

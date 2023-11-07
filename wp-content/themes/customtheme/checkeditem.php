@@ -14,23 +14,45 @@ get_header();
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td><?php echo get_post_meta(68,'c1',true); ?></td>
+      <?php $i = 1; ?>
+      <?php if (!empty(get_post_meta(68, 'c1', true))) {
+        echo '<th scope="row">' . $i . '</th>
+        <td>' . get_post_meta(68, "c1", true) . '</td>
+      ';
+        $i++;
+      } ?>
+
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td><?php echo get_post_meta(68,'c2',true); ?></td>
+      <?php if (!empty(get_post_meta(68, 'c2', true))) {
+        echo '<th scope="row">' . $i . '</th>
+        <td>' . get_post_meta(68, "c2", true) . '</td>
+      ';
+        $i++;
+      } ?>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td colspan="2"><?php echo get_post_meta(68,'c3',true); ?></td>
+      <?php if (!empty(get_post_meta(68, 'c3', true))) {
+        echo '<th scope="row">' . $i . '</th>
+        <td>' . get_post_meta(68, "c3", true) . '</td>
+      ';
+
+        $i++;
+      }
+      ?>
     </tr>
     <tr>
-      <th scope="row">4</th>
-      <td colspan="2"><?php echo get_post_meta(68,'c4',true); ?></td>
+      <?php if (!empty(get_post_meta(68, 'c4', true))) {
+        echo '<th scope="row">' . $i . '</th>
+        <td>' . get_post_meta(68, "c4", true) . '</td>
+      ';
+
+        $i++;
+      }
+      ?>
     </tr>
   </tbody>
 </table>
 
 <?php
-get_footer();
+get_footer(); ?>

@@ -163,7 +163,7 @@
     }
     add_action('init', 'cw_post_type_cars');
 
-    //for permalink of custom post tags and post
+    //for permalink of custom post tags and post-
     function modify_tag_query($query)
     {
         if ($query->is_tag() && $query->is_main_query()) {
@@ -244,6 +244,7 @@
     {
         // $columns = array_slice($columns, 0, 1, true) + array("img" => "Featured Image") + array_slice($columns, 1, count($columns) - 1, true);
         // return $columns;
+        
         $author_column = 'tags';
         $position = array_search($author_column, array_keys($columns));
 
@@ -257,6 +258,7 @@
 
     function manage_recommendation_column($column_name, $post_id)
     {
+        
         if ($column_name == 'recom') {
 
             $w = new WP_Query(['post_type' => 'cars']);
@@ -452,9 +454,9 @@
     }
     function render_link_metabox(\WP_Post $post)
     {
-
+        
         $link = get_post_meta($post->ID, 'link', true);
-
+        
     ?>
         <label for="link">Enter Company Site</label>
         <input type="link" name="link" value="<?php echo $link ?>">
@@ -621,3 +623,47 @@ function form_data_list1()
 {
     include 'form1.php';
 }
+
+
+function my_acf_add_local_field_groups() {
+    acf_add_local_field_group(array(
+        'key' => 'group_cars_fields',
+        'title' => 'Cars Fields',
+        'fields' => array (
+            array (
+                'key' => 'field_sub_title',
+                'label' => 'Sub Title',
+                'name' => 'sub_title',
+                'type' => 'text',
+            ),array (
+                'key' => 'field_car_price',
+                'label' => 'Price',
+                'name' => 'field_price',
+                'type' => 'number',
+            ),array (
+                'key' => 'field_car_eng',
+                'label' => 'Engine Type',
+                'name' => 'field_eng',
+                'type' => 'text',
+            ),array (
+                'key' => 'field_car_hp',
+                'label' => 'Engine Power',
+                'name' => 'field_hp',
+                'type' => 'number',
+            )
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page',
+                ),
+            ),
+        ),
+    ));
+}
+
+add_action('acf/init', 'my_acf_add_local_field_groups');
+
+// Display the custom column data
